@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+
 
 namespace GradeBook.GradeBooks
 {
@@ -65,6 +67,16 @@ namespace GradeBook.GradeBooks
             {
                 return 'F';
             }
+        }
+        public override void CalculateStatistics()
+        {
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            }
+
+            if (Students.Count >= 5)
+                base.CalculateStatistics();
         }
     }
 }
